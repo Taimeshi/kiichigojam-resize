@@ -71,7 +71,7 @@ def main():
             elif e.type == pg.MOUSEBUTTONDOWN:  # for debug
                 if pg.key.get_pressed()[pg.K_LSHIFT]:
                     print(pg.mouse.get_pos())
-            elif e.type == pg.MOUSEBUTTONUP:
+            elif e.type == pg.MOUSEBUTTONUP and e.button == 1:
                 mouse_up = True
         if pg.mouse.get_pressed()[0]:
             mouse_count += 1
