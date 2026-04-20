@@ -1,3 +1,5 @@
+import os
+import sys
 from pathlib import Path
 
 VOID = (0, 0, 0, 0)
@@ -18,5 +20,9 @@ MIN_HEIGHT = 200
 MAX_WIDTH = 900
 MAX_HEIGHT = 600
 
-PATH = "."
-# PATH = Path(__file__).resolve().parent
+if getattr(sys, 'frozen', False):
+    # exe / app のとき
+    PATH = os.path.dirname(sys.executable)
+else:
+    # 普通に python 実行
+    PATH = os.path.dirname(os.path.abspath(__file__))
