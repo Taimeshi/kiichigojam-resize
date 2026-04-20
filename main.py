@@ -269,6 +269,9 @@ def main():
         sc.blit(main_sf, (0, 50))
         sc.blit(cursor_img, [m_x, m_y])
 
+        if pg.key.get_pressed()[pg.K_TAB]:  # デバッグ用
+            pg.image.save(sc, f"screenshot_{tmr}.png")
+
         pg.display.flip()
         cl.tick(60)
 
