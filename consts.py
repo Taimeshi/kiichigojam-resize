@@ -22,7 +22,10 @@ MAX_HEIGHT = 600
 
 if getattr(sys, 'frozen', False):
     # exe / app のとき
-    PATH = os.path.dirname(sys.executable)
+    if sys.platform == "darwin":
+        PATH = os.path.join(os.path.dirname(sys.executable), "..")  # .app
+    else:
+        PATH = os.path.dirname(sys.executable)  # .exe
 else:
     # 普通に python 実行
-    PATH = os.path.dirname(os.path.abspath(__file__))
+    PATH = os.path.dirname(os.path.abspath(__file__))  # .py
