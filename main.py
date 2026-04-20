@@ -120,6 +120,7 @@ def main():
                     score = 0
                     sc = pg.display.set_mode((DEFAULT_WIDTH, DEFAULT_HEIGHT), pg.RESIZABLE)
                     main_sf = pg.Surface((DEFAULT_WIDTH, DEFAULT_HEIGHT - 50), pg.SRCALPHA)
+                    pg.display.set_caption("RESIZE")
                     continue
 
             if main_sf.get_width() > 530:
@@ -259,6 +260,8 @@ def main():
                     with open(os.path.join(PATH, "best_score"), "w") as f:
                         f.write(str(best_score))
                 index = Index.TITLE
+                score = 0
+                pg.display.set_caption("RESIZE")
 
         # その他
         effect_manager.update()
@@ -269,8 +272,8 @@ def main():
         sc.blit(main_sf, (0, 50))
         sc.blit(cursor_img, [m_x, m_y])
 
-        if pg.key.get_pressed()[pg.K_TAB]:  # デバッグ用
-            pg.image.save(sc, f"screenshot_{tmr}.png")
+        # if pg.key.get_pressed()[pg.K_TAB]:  # デバッグ用
+        #     pg.image.save(sc, f"screenshot_{tmr}.png")
 
         pg.display.flip()
         cl.tick(60)
