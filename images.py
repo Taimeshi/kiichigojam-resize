@@ -1,17 +1,12 @@
 import pygame as pg
 import os
-from consts import RESOURCE_PATH
+from consts import PATH
 
 """
-全てIcons8(icons8.com)の素材 (着色、拡大縮小)を使用しています。
+全てIcons8(icons8.com)の素材 (着色、拡大縮小を施したもの)を使用しています。
 """
 
-
-def _load(filename: str) -> pg.Surface:
-    return pg.image.load(os.path.join(RESOURCE_PATH, filename)).convert_alpha()
-
-
-_sprites = pg.image.load(os.path.join(RESOURCE_PATH, 'sprites.png')).convert_alpha()
+_sprites = pg.image.load(os.path.join(PATH, "resources", "sprites.png")).convert_alpha()
 
 knife_img = _sprites.subsurface([0, 0, 40, 40])
 restart_img = _sprites.subsurface([40, 0, 40, 40])

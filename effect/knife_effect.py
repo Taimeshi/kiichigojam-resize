@@ -18,7 +18,7 @@ class KnifeEffect(Effect):
     def should_destroy(self) -> bool:
         return self._tmr >= 30
 
-    def draw(self, sf: pg.Surface):
+    def draw(self, sf: pg.Surface) -> None:
         if self.should_destroy:
             return
         alpha = 255
@@ -45,6 +45,6 @@ class KnifeEffect(Effect):
         tmp_sf.set_alpha(alpha)
         sf.blit(tmp_sf, [0, 0])
 
-    def update(self):
+    def update(self) -> None:
         self._tmr += 1
 

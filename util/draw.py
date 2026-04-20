@@ -5,15 +5,16 @@ import numpy as np
 from math import cos, sin
 
 
+_POS = tuple[int, int] | np.ndarray
+
+
 def _rotate(vec: np.ndarray, deg: float) -> np.ndarray:
     x = np.deg2rad(deg)
     rot = np.array([[cos(x), -sin(x)], [sin(x), cos(x)]])
     return np.dot(rot, vec)
 
 
-def arrow(sf: pg.Surface,
-          start: tuple[int, int] | np.ndarray, end: tuple[int, int] | np.ndarray,
-          color: tuple[int, int, int],
+def arrow(sf: pg.Surface, start: _POS, end: _POS, color: tuple[int, int, int],
           width: int = 5, deg: float = 45, arrow_size: int = 20,
           head: tuple[bool, bool] = (True, True), guide: bool = False) -> None:
     pg.draw.line(sf, color, start, end, width)
@@ -38,7 +39,7 @@ def arrow(sf: pg.Surface,
                      [end[0] - v3[0], end[1] - v3[1]], (end[0] + v3[0], end[1] + v3[1]), width)
 
 
-def ball(sf: pg.Surface, color: tuple[int, int, int], pos: tuple[int, int] | np.ndarray, tmr: int) -> None:
+def ball(sf: pg.Surface, color: tuple[int, int, int], pos: _POS, tmr: int) -> None:
     pg.draw.circle(sf, color, pos, 10)
 
     r = 17
@@ -47,8 +48,8 @@ def ball(sf: pg.Surface, color: tuple[int, int, int], pos: tuple[int, int] | np.
                     np.deg2rad(-tmr * 2 + i * 120), np.deg2rad(-tmr * 2 + i * 120 + 90), 3)
 
 
-def dashed_line(sf: pg.Surface, start: tuple[int, int] | np.ndarray, end: tuple[int, int] | np.ndarray,
-                color: tuple[int, int, int], width: int = 5, dash_length: int = 10) -> None:
+def dashed_line(sf: pg.Surface, start: _POS, end: _POS, color: tuple[int, int, int],
+                width: int = 5, dash_length: int = 10) -> None:
     v = np.array([end[0] - start[0], end[1] - start[1]])
     n: int = math.ceil(np.linalg.norm(v) / dash_length)
     v_u = v / np.linalg.norm(v)

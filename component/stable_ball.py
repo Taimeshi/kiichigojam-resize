@@ -1,5 +1,6 @@
-from component.ball import Ball
 import pygame as pg
+
+from component.ball import Ball
 
 
 class StableBall(Ball):
@@ -10,5 +11,5 @@ class StableBall(Ball):
 
         super().__init__()
 
-    def get_pos(self, sf: pg.Surface):
-        return self._x * (sf.get_width() / 600), self._y * (sf.get_height() / 400)
+    def get_pos(self, sf: pg.Surface) -> tuple[int, int]:
+        return int(self._x * (sf.get_width() / 600)), int(self._y * (sf.get_height() / 400))

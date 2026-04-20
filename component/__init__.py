@@ -4,3 +4,5 @@ from component.group import Group
 from component.grouped_ball import GroupedBall
 from component.ball_manager import BallManager
 from component.circle_group import CircleGroup
+from component.moving_circle_group import MovingCircleGroup
+from component.pendulum_group import PendulumGroup

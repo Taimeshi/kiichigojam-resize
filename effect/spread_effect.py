@@ -28,12 +28,12 @@ class SpreadEffect(Effect):
     def should_destroy(self) -> bool:
         return self._tmr > 255 / 10
 
-    def update(self):
+    def update(self) -> None:
         self._tmr += 1
         for p in self._particles:
             p.pos += p.dir_vec
 
-    def draw(self, sf: pg.Surface):
+    def draw(self, sf: pg.Surface) -> None:
         tmp_sf = pg.surface.Surface(sf.get_size(), pg.SRCALPHA)
         tmp_sf.fill(VOID)
 

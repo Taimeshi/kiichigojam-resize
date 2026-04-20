@@ -1,13 +1,14 @@
 import pygame as pg
 
 from component.ball import Ball
-# from component.group import Group  # 良くない気がする
+import component
+# from component.group import Group  # 循環参照
 
 
 class GroupedBall(Ball):
 
-    def __init__(self, group):
-        self._group = group
+    def __init__(self, group: 'component.group.Group'):
+        self._group = group  # やめたい
         super().__init__()
 
     def get_pos(self, sf: pg.Surface) -> tuple[int, int]:

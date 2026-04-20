@@ -10,9 +10,9 @@ class Effect(metaclass=ABCMeta):
         ...
 
     @abstractmethod
-    def update(self):
+    def update(self) -> None:
         ...
 
     @abstractmethod
-    def draw(self, sf):
+    def draw(self, sf: pg.Surface) -> None:
         ...

@@ -18,19 +18,19 @@ class BallManager:
     def ball_num(self) -> int:
         return len(self._balls)
 
-    def update(self):
+    def update(self) -> None:
         for group in self._groups:
             group.update()
 
-    def add_ball(self, ball: Ball):
+    def add_ball(self, ball: Ball) -> None:
         self._balls.add(ball)
 
-    def add_group(self, group: Group):
+    def add_group(self, group: Group) -> None:
         self._groups.add(group)
         for ball in group.balls:
             self.add_ball(ball)
 
-    def draw(self, sf: pg.Surface, tmr: int):
+    def draw(self, sf: pg.Surface, tmr: int) -> None:
         for group in self._groups:
             group.draw(sf)
         for ball in self._balls:
@@ -51,6 +51,6 @@ class BallManager:
 
         return killed_count
 
-    def clear(self):
+    def clear(self) -> None:
         self._balls.clear()
         self._groups.clear()
