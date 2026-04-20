@@ -13,8 +13,6 @@ class MovingCircleGroup(CircleGroup):
     def __init__(self, num: int, pos: tuple[int, int], default_radius: int, speed: int):
         super().__init__(num, pos, default_radius, speed)
         self._default_radius = default_radius
-        for _ in range(num):
-            self.balls.append(GroupedBall(self))
 
     @override
     @property

@@ -66,6 +66,7 @@ def main():
             elif e.type == pg.VIDEORESIZE:
                 if transit_count > 0 or index != Index.GAME:  # ゲームプレイ時のみリサイズを許可
                     sc = pg.display.set_mode((DEFAULT_WIDTH, DEFAULT_HEIGHT), pg.RESIZABLE)
+                    main_sf = pg.Surface((DEFAULT_WIDTH, DEFAULT_HEIGHT - 50), pg.SRCALPHA)
                 else:
                     sc = pg.display.set_mode(clamp_size(e.w, e.h), pg.RESIZABLE)
                     main_sf = pg.Surface((sc.get_width(), sc.get_height() - 50), pg.SRCALPHA)
@@ -117,6 +118,8 @@ def main():
                     index = Index.TITLE
                     ball_manager.clear()
                     score = 0
+                    sc = pg.display.set_mode((DEFAULT_WIDTH, DEFAULT_HEIGHT), pg.RESIZABLE)
+                    main_sf = pg.Surface((DEFAULT_WIDTH, DEFAULT_HEIGHT - 50), pg.SRCALPHA)
                     continue
 
             if main_sf.get_width() > 530:
@@ -178,7 +181,7 @@ def main():
                     effect_manager.add(ef.KnifeEffect(start_vec - dir_vec * 1000, start_vec + dir_vec * 1000))
 
                     killed = ball_manager.knife(start_vec, dir_vec, main_sf, effect_manager)
-                    score += int(killed ** 1.1 * (main_sf.get_width() + main_sf.get_height()) * math.sqrt(phase))
+                    score += int((killed ** 1.2) * (main_sf.get_width() + main_sf.get_height()) * math.sqrt(phase))
                     knife_remaining -= 1
                     if knife_remaining == 0 or ball_manager.ball_num == 0:  # フェーズ終了
                         # ボーナススコア
@@ -230,6 +233,8 @@ def main():
                             ball_manager.add_group(PendulumGroup((300, 50), 200, 70, 1))
                         case 5:  # リザルトに移行
                             index = Index.RESULT
+                            sc = pg.display.set_mode((DEFAULT_WIDTH, DEFAULT_HEIGHT), pg.RESIZABLE)
+                            main_sf = pg.Surface((DEFAULT_WIDTH, DEFAULT_HEIGHT - 50), pg.SRCALPHA)
             # ----------------
 
         elif index == Index.RESULT:
