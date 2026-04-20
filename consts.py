@@ -23,7 +23,7 @@ MAX_HEIGHT = 600
 if getattr(sys, 'frozen', False):
     # exe / app のとき
     if sys.platform == "darwin":
-        PATH = os.path.join(os.path.dirname(sys.executable), "..")  # .app
+        PATH = os.path.join(os.path.dirname(sys.executable), "../../..")  # .app
     else:
         PATH = os.path.dirname(sys.executable)  # .exe
 else:
