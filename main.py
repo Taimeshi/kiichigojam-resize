@@ -37,7 +37,7 @@ def main():
     ft = pg.font.Font(ft_path, 25)
     ft_large = pg.font.Font(ft_path, 30)
     ft_exlarge = pg.font.Font(ft_path, 60)
-    ft_title = pg.font.Font(ft_path, 100)
+    ft_title = pg.font.Font(ft_path, 90)
     index = Index.TITLE
 
     score: int = 0
@@ -87,7 +87,7 @@ def main():
             main_sf.fill(CREAM)
 
             # 文字の描画
-            title_txt = ft_title.render(f"RESIZE", True, BG)
+            title_txt = ft_title.render(f"「RESIZE」", True, BG)
             main_sf.blit(title_txt, ((DEFAULT_WIDTH - title_txt.get_width()) // 2, 50))
             txt1 = ft_large.render("Click Mouse to Start", True, BG)
             txt2 = ft_large.render(f"Best Score: {best_score}", True, BG)
