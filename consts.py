@@ -18,4 +18,5 @@ MIN_HEIGHT = 200
 MAX_WIDTH = 900
 MAX_HEIGHT = 600
 
-PATH = Path(__file__).resolve().parent
+PATH = "."
+# PATH = Path(__file__).resolve().parent

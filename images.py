@@ -7,6 +7,7 @@ from consts import PATH
 """
 
 _sprites = pg.image.load(os.path.join(PATH, "resources", "sprites.png")).convert_alpha()
+icon = pg.image.load(os.path.join(PATH, "resources", "icon.ico"))
 
 knife_img = _sprites.subsurface([0, 0, 40, 40])
 restart_img = _sprites.subsurface([40, 0, 40, 40])

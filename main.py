@@ -49,11 +49,17 @@ def main():
     end_pos: tuple[int, int] = (0, 0)
     transit_count: int = 1
 
-    with open(os.path.join(PATH, "best_score"), "r") as f:
-        try:
-            best_score = int(f.read())
-        except ValueError:
-            print("Best Score must be an integer.")
+    try:
+        with open(os.path.join(PATH, "best_score"), "r") as f:
+            try:
+                best_score = int(f.read())
+            except ValueError:
+                print("Best Score must be an integer.")
+                best_score = 0
+    except FileNotFoundError:
+        with open(os.path.join(PATH, "best_score"), "w") as f:
+            print("best_score was not found.")
+            f.write("0")
             best_score = 0
 
     while True:
@@ -284,4 +290,5 @@ if __name__ == "__main__":
     sc = pg.display.set_mode(clamp_size(DEFAULT_WIDTH, DEFAULT_HEIGHT + 50), pg.RESIZABLE)
     pg.display.set_caption("RESIZE")
     from images import *  # convert_alpha()のためにこの位置でインポート
+    pg.display.set_icon(icon)
     main()
